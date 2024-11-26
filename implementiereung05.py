@@ -34,19 +34,30 @@ class Warteschlange:
 
 
     def addbestellung(self):
-        if self.bestellwindowopen == True:
-            print("test")
+        if self.bestellwindowopen:
+            self.add_Bestellung.config(bg="red")
+            self.master.update_idletasks()
+            sleep(0.2)
+            self.add_Bestellung.config(bg="grey")
         else:
             self.bestellwindowopen = True
             global bestell_window
             bestell_window = Tk()
-            bestell_window.geometry("1080x720")
+            bestell_window.geometry("800x600")
             bestell_window.title("Bestellung")
+            bestell_window.protocol("WM_DELETE_WINDOW", self.reopen_bestellwindow)  # Handle X button
+
             global Bestellung
             Bestellung = []
             self.queue.append(Bestellung)
-            quitbestmenu = Button(master = bestell_window, text = "Bestellung Komplett", bg = "gray", command = self.closebestwindow, font=("Arial", 14, "bold"))
-            quitbestmenu.grid(row=3, column=0, columnspan=4, rowspan = 1, sticky = "NSEW", padx = 100, pady = 50)
+            quitbestmenu = Button(
+                master=bestell_window,
+                text="Bestellung Komplett",
+                bg="gray",
+                command=self.closebestwindow,
+                font=("Arial", 14, "bold")
+                )
+            quitbestmenu.grid(row=3, column=0, columnspan=4, rowspan=1, sticky="NSEW", padx=100, pady=50)
             for i in range(4):
                 bestell_window.columnconfigure(i, weight=1)
             for i in range(4):
@@ -54,9 +65,22 @@ class Warteschlange:
             item_index = 0
             for i in range(3):
                 for j in range(4):
-                    item = Button(master = bestell_window, text = itemlist[item_index], bg = "gray", font=("Arial", 15, "bold"), command = lambda l = item_index: self.additem(l))
+                    item = Button(
+                        master=bestell_window,
+                        text=itemlist[item_index],
+                        bg="gray",
+                        font=("Arial", 15, "bold"),
+                        command=lambda l=item_index: self.additem(l)
+                    )
                     item.grid(row=i, column=j, padx=5, pady=5, sticky="NSEW")
-                    item_index = item_index + 1
+                    item_index += 1
+
+    def reopen_bestellwindow(self):
+        """Handle the case where the 'X' button on the Bestellung window is clicked."""
+        bestell_window.destroy()  # Destroy the window
+        self.bestellwindowopen = False  # Reset the state
+        self.addbestellung()  # Reopen the Bestellung window
+        self.queue.pop(-1)
                 
             
     def additem(self, item):
