@@ -45,7 +45,7 @@ class Warteschlange:
             bestell_window = Tk()
             bestell_window.geometry("800x600")
             bestell_window.title("Bestellung")
-            bestell_window.protocol("WM_DELETE_WINDOW", self.bestellwindowopen == False)  # Handle X button
+            bestell_window.protocol("WM_DELETE_WINDOW", lambda: None)
 
             global Bestellung
             Bestellung = []
