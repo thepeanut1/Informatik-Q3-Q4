@@ -45,7 +45,7 @@ class Warteschlange:
             bestell_window = Tk()
             bestell_window.geometry("800x600")
             bestell_window.title("Bestellung")
-            bestell_window.protocol("WM_DELETE_WINDOW", self.reopen_bestellwindow)  # Handle X button
+            bestell_window.protocol("WM_DELETE_WINDOW", self.bestellwindowopen == False)  # Handle X button
 
             global Bestellung
             Bestellung = []
@@ -74,13 +74,6 @@ class Warteschlange:
                     )
                     item.grid(row=i, column=j, padx=5, pady=5, sticky="NSEW")
                     item_index += 1
-
-    def reopen_bestellwindow(self):
-        """Handle the case where the 'X' button on the Bestellung window is clicked."""
-        bestell_window.destroy()  # Destroy the window
-        self.bestellwindowopen = False  # Reset the state
-        self.addbestellung()  # Reopen the Bestellung window
-        self.queue.pop(-1)
                 
             
     def additem(self, item):
@@ -94,6 +87,7 @@ class Warteschlange:
         bestell_window.destroy()
         self.update_display()
         self.bestellwindowopen = False
+
         
         
         
