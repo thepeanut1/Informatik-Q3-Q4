@@ -43,34 +43,32 @@ class Header:
 
 
     def delItem(self, item):
+        self.end = self.head
         if self.length == 0:
             print("List is empty")
         else:
             itemDeleted = False
             while True:
-                if self.posInList.value == item:
+                if self.end.value == item:
                     itemDeleted = True
-                    if self.posInList == self.head:
+                    if self.end == self.head:
                         self.delKopf()
-                    elif self.posInList == self.end:
-                        
+                    elif self.end.nextNode == None:
                         self.end = prevNode
-                        print(f"deleting {item}")
+                        print(f"deleting {item}2")
                         prevNode.nextNode = None
-                        self.posInList = self.head
                         break
                     else:
                         print(f"deleting {item}")
-                        prevNode.nextNode = self.posInList.nextNode
+                        prevNode.nextNode = self.end.nextNode
                     
                     
                     
                     
-                if self.posInList == self.end:
-                    self.posInList = self.head
+                if self.end.nextNode == None:
                     break
-                prevNode = self.posInList
-                self.posInList = self.posInList.nextNode
+                prevNode = self.end
+                self.end = self.end.nextNode
 
             if itemDeleted == False:
                 print(f"{item} was not found.")
