@@ -25,11 +25,12 @@ class Header:
             while True:
                 print(self.posInList.value)
                 if self.posInList == self.end:
+                    self.posInList = self.head
                     break
                 self.posInList = self.posInList.nextNode
 
     def delKopf(self):
-        if self.länge > 0:
+        if self.length > 0:
             value = self.head.value
             self.head = self.head.nextNode
             self.length -= 1
@@ -40,6 +41,39 @@ class Header:
         else:
             print("Die Liste ist leer")
 
+
+    def delItem(self, item):
+        if self.length == 0:
+            print("List is empty")
+        else:
+            itemDeleted = False
+            while True:
+                if self.posInList.value == item:
+                    itemDeleted = True
+                    if self.posInList == self.head:
+                        self.delKopf()
+                    elif self.posInList == self.end:
+                        
+                        self.end = prevNode
+                        print(f"deleting {item}")
+                        prevNode.nextNode = None
+                        self.posInList = self.head
+                        break
+                    else:
+                        print(f"deleting {item}")
+                        prevNode.nextNode = self.posInList.nextNode
+                    
+                    
+                    
+                    
+                if self.posInList == self.end:
+                    self.posInList = self.head
+                    break
+                prevNode = self.posInList
+                self.posInList = self.posInList.nextNode
+
+            if itemDeleted == False:
+                print(f"{item} was not found.")
 
 
 class Node:
@@ -53,19 +87,15 @@ list1.addItem(1)
 list1.addItem(3)
 list1.addItem(True)
 list1.addItem(78)
+
 list1.addItem(2)
 list1.addItem("test")
 
-
-
-
-list1.delKopf()
-list1.delKopf()
-list1.delKopf()
-list1.delKopf()
-list1.delKopf()
-
-
+list1.printList()
+print("\n")
+list1.delItem(1)
 
 list1.printList()
+
+#list1.printList()
     
