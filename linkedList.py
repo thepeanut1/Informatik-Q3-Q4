@@ -29,13 +29,16 @@ class Header:
                 self.posInList = self.posInList.nextNode
 
     def delKopf(self):
-        self.length -= 1
-        if self.head == self.end:
-            self.head = None
-        else:
+        if self.länge > 0:
+            value = self.head.value
             self.head = self.head.nextNode
+            self.length -= 1
+            if self.length == 0:
+                self.end = None
+            return value
 
-        self.posInList = self.head
+        else:
+            print("Die Liste ist leer")
 
 
 
