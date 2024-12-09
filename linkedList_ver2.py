@@ -103,7 +103,7 @@ list1.delKopf()
 list1.printList()
 #list1.printList()
 print("\n")
-list1.delitem("test")
+list1.delitem(1)
 list1.printList()
 
 
