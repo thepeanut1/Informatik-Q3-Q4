@@ -49,7 +49,27 @@ class Header:
 
         else:
             print("List is not empty")
-
+            
+    def delete(self, item):
+        if self.length == 0:
+            print("List is empty")
+        else:
+            while True:
+                if self.posInList.value == item:
+                    print(f"deleting {item}")
+                    if self.posInList == self.end.nextNode:
+                        self.posInList.nextNode.prevNode = None
+                        self.end.nextNode = self.posInList.nextNode
+                    elif self.posInList == self.end:
+                        self.end = self.posInList.prevNode
+                        self.posInList.prevNode.nextNode = self.posInList.nextNode
+                    else:
+                        self.posInList.nextNode.prevNode = self.posInList.prevNode
+                        self.posInList.prevNode.nextNode = self.posInList.nextNode
+                if self.posInList == self.end:                    
+                    self.posInList = self.end.nextNode
+                    break
+                self.posInList = self.posInList.nextNode
 
 
 class Node:
