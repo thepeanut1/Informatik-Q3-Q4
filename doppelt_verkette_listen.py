@@ -70,6 +70,32 @@ class Header:
                     self.posInList = self.end.nextNode
                     break
                 self.posInList = self.posInList.nextNode
+    
+    def insertItem(self, pos_von, item):
+        k = Node(item)
+        while True:
+
+                if self.end.nextNode.value == pos_von:
+                    #print("wiener")
+                    self.end.nextNode.prevNode = k
+                    k.nextNode = self.end.nextNode
+                    self.end.nextNode = k
+
+
+                if self.posInList.value == pos_von:
+                    self.posInList.prevNode.nextNode = k
+                    self.posInList.prevNode = k
+                    k.nextNode = self.posInList
+                    k.prevNode = self.posInList.prevNode
+                    print("yea")
+                    
+                if self.posInList == self.end:
+                    print("test1")
+                    self.posInList = self.end.nextNode
+                    self.length += 1
+                    break
+
+                self.posInList = self.posInList.nextNode
 
 
 class Node:
