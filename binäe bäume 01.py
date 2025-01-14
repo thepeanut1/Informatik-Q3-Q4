@@ -1,12 +1,14 @@
-
+from Turtle import *
 
 class Binärbaum:
     def __init__(self):
         """create empty tree"""
         self.root = None
+        self.current_counter = -1
+        self.height = 0
 
     def addItem(self, val, node = None, parent = None):
-
+        self.current_counter +=1
         if parent == None:
             print("Root was assigned to parent")
             parent = self.root
@@ -36,6 +38,10 @@ class Binärbaum:
             return self.addItem(val, node, parent.left)
         
         print(f"{val} added \n \n")
+        if self.current_counter > self.height:
+            self.height = self.current_counter
+
+        self.current_counter = 0
 
     def listToTree(self, l, posInList = 0):
         if posInList == len(l):
