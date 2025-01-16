@@ -66,7 +66,7 @@ class Binärbaum:
             
     def drawTree(self):
         if self.height > 7:
-            print("Tree hight over 7\nto many levels to print")
+            print("Tree height over 7\nto many levels to print")
             return
         t = Turtle()
         t.speed(0)
