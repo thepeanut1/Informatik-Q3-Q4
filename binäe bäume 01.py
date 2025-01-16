@@ -71,10 +71,10 @@ class Binärbaum:
         t = Turtle()
         t.speed(0)
         t.hideturtle()
-        t.screen.screensize(800,800)
+        t.screen.screensize(1000,1000)
         t.penup()
         t.pencolor("red")
-        t.goto(0,380)
+        t.goto(0,370)
         t.write(self.root.value, align="center")
 
         if self.root.right != None:
@@ -84,7 +84,7 @@ class Binärbaum:
 
         if self.root.left != None:
             t.pendown()
-            t.goto(0,380)
+            t.goto(0,370)
             t.goto((t.xcor() - 400/2**1), (t.ycor()-100))
             self.drawLeft(self.root.left,2, t.pos())
 
