@@ -75,6 +75,8 @@ class Binaerbaum:
             print(aktueller_knoten.wert, aktueller_knoten.vorname, aktueller_knoten.klasse, end="\n")
             self._inorder_rekursiv(aktueller_knoten.rechts)
 
+baum = Binaerbaum()
+
 # Beispielnutzung
 baum.einfuegen("bergmann", "ben", "7eu1") 
 baum.einfuegen("vaidya", "pranit", "9eu2") 
