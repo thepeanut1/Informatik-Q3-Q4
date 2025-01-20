@@ -19,7 +19,7 @@ class Binaerbaum:
 
     def _einfuegen_rekursiv(self, aktueller_knoten, wert, vorname, klasse):
         """Fügt einen Wert rekursiv ein. Interne Methode."""
-        if wert < aktueller_knoten.wert:
+        if wert <= aktueller_knoten.wert:
             if aktueller_knoten.links is None:
                 aktueller_knoten.links = Knoten(wert, vorname, klasse)
             else:
@@ -72,12 +72,36 @@ class Binaerbaum:
         """Rekursive In-Order-Traversierung."""
         if aktueller_knoten is not None:
             self._inorder_rekursiv(aktueller_knoten.links)
-            print(aktueller_knoten.wert, aktueller_knoten.vorname, aktueller_knoten.klasse, end="\n")
+            print("-",aktueller_knoten.wert, aktueller_knoten.vorname, aktueller_knoten.klasse, end="\n")
             self._inorder_rekursiv(aktueller_knoten.rechts)
 
-baum = Binaerbaum()
+
+    def klassenliste(self, klasse):
+        """Öffentliche Methode für die In-Order-Traversierung."""
+        print(f"Klassenliste {klasse}:")
+        self._klassenliste_rekursiv(self.wurzel, klasse)
+
+    def _klassenliste_rekursiv(self, aktueller_knoten, klasse):
+        """Rekursive In-Order-Traversierung."""
+        if aktueller_knoten is not None:
+            self._klassenliste_rekursiv(aktueller_knoten.links, klasse)
+            if aktueller_knoten.klasse == klasse:
+                print(f"\t-{aktueller_knoten.wert.upper()},{aktueller_knoten.vorname.upper()}")
+            self._klassenliste_rekursiv(aktueller_knoten.rechts, klasse)
+
+
 
 # Beispielnutzung
+baum = Binaerbaum()
+"""
+baum.einfuegen("bergmann", "ben", "Q3")
+baum.einfuegen("vaidya", "pranit", "Q4")
+baum.einfuegen("zhang", "sophie", "Q3")
+baum.einfuegen("schröder", "jakob", "Q3")
+baum.einfuegen("de Bucourt", "Noah", "Q4")
+"""
+
+
 baum.einfuegen("bergmann", "ben", "7eu1") 
 baum.einfuegen("vaidya", "pranit", "9eu2") 
 baum.einfuegen("zhang", "sophie", "Q1") 
@@ -167,11 +191,15 @@ baum.einfuegen("richter", "anna", "Q4")
 baum.einfuegen("reiter", "david", "8eu1") 
 baum.einfuegen("seidel", "amélie", "9e2") 
 baum.einfuegen("vogt", "victor", "Q3") 
+
+
 # Geordnete Ausgabe der enthaltenen Daten
 # (In-Order-Traversierung)
 baum.inorder()
+print("\n")
+baum.klassenliste("9eu1")
 # Wert suchen
-wert1 = "bergmann"
+wert1 = "de Bucourt"
 gefundener_knoten = baum.suche(wert1)
 if gefundener_knoten:
     print(f"\nGefundener Wert: {gefundener_knoten.wert}")
