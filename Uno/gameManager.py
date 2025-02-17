@@ -33,9 +33,17 @@ class Cards:
             self.color = color
             self.number = number
 
+def play_card(selected_card):
+    if selected_card.color = playedcards[-1].color or selected_card.number = playedcards[-1].number or selected_card.color = "black":
+        playedcards.append(selected_card)
+        player.deck.pop(selected_card)
+       
+
 
 def turn(p):
     p.show_cards()
+    print("selected_card")
+    
 
 def start_game():
     global stack
