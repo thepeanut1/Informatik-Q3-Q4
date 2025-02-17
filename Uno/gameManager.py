@@ -53,6 +53,7 @@ def start_game():
         print(stack[i].cardID)
 
     playeramount = int(input("Please enter the number of players:"))
+    global playerlist
     playerlist = []
 
 
