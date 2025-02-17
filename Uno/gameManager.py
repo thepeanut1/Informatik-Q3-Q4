@@ -33,6 +33,9 @@ class Cards:
             self.number = number
 
 
+def turn():
+    pass
+
 def start_game():
     global stack
     stack = []
@@ -60,6 +63,12 @@ def start_game():
         print(i)
 
 
+    playedcards = []
+    playedcards.append(stack[0])
+    stack.pop(1)
+
+
+    
     print("\n")
     for i in range(5):
         print(playerlist[0].deck[i].cardID)
@@ -67,8 +76,11 @@ def start_game():
     for i in range(5):
         print(playerlist[1].deck[i].cardID)
 
+    print("\n")
+    for i in range(5):
+        print(stack[i].cardID)
 
-    pass
+
 
 
 start_game()
