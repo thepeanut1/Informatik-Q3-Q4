@@ -1,17 +1,40 @@
 import random
-from player import *
 
 colors = ["Yellow", "Green", "Blue", "Red"]
 numbers = [1,2,4,5,6,7,8,9]
 
 
-def start_game():
-    class Cards:
+class Player:
+        def __init__(self, ID, name):
+            self.ID = ID
+            self.name = name
+            self.deck = []
+
+
+        def check_cards(self):
+            pass
+
+        def hide_cards(self):
+            pass
+        def show_cards(self):
+            pass
+
+        def give_cards(self):
+            for i in range(5):
+                
+                self.deck.append(stack[i])
+            for i in range(5):
+                stack.pop(i)
+
+class Cards:
         def __init__(self, cardID, color, number):
             self.cardID = cardID
             self.color = color
             self.number = number
 
+
+def start_game():
+    global stack
     stack = []
 
     for color in colors:
@@ -31,9 +54,10 @@ def start_game():
 
 
     for i in range(playeramount):
-        player = Player(i+1, input(f"Player {i+1}, please enter a name:"))
+        player = Player(i, input(f"Player {i}, please enter a name:"))
         playerlist.append(player)
         player.give_cards()
+        print(i)
 
 
     print("\n")
@@ -43,7 +67,8 @@ def start_game():
     for i in range(5):
         print(playerlist[1].deck[i].cardID)
 
-    
+
+    pass
 
 
 start_game()
