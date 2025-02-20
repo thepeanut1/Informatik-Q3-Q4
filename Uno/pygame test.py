@@ -27,35 +27,36 @@ while running:
 
     for i in range(len(myCard)):
         spacing = 400 / len(myCard)
-        screen.blit(pygame.transform.scale(pygame.image.load("cards/"+myCard[i].color+"_"+str(myCard[i].number)+".jpg"),[150,150]),[spacing * i + 400, 700])
+        screen.blit(pygame.transform.scale(pygame.image.load("cards/"+myCard[i].color+"_"+str(myCard[i].number)+".jpg"),[105,150]),[spacing * i + 400, 700])
 
 
     if len(gameManager.playerlist) == 2:
         for i in range(len(gameManager.playerlist[1].deck)):
             spacing = 300 / len(gameManager.playerlist[1].deck)
-            screen.blit(pygame.transform.scale(pygame.image.load("cards/back.png"),[150,150]),[spacing * i + 425, 100])
+            
+            screen.blit(pygame.transform.rotate(pygame.transform.scale(pygame.image.load("cards/back.png"),[97,150]), 180),[spacing * i + 425, 100])
         
     if len(gameManager.playerlist) == 3:
         for i in range(len(gameManager.playerlist[playerID + 2].deck)):
             spacing = 300 / len(gameManager.playerlist[playerID + 2].deck)
-            screen.blit(pygame.transform.scale(pygame.image.load("cards/back.png"),[150,150]),[spacing * i + 425, 100])
+            screen.blit(pygame.transform.rotate(pygame.transform.scale(pygame.image.load("cards/back.png"),[97,150]), 180),[spacing * i + 425, 100])
  
         for i in range(len(gameManager.playerlist[playerID + 1].deck)):
             spacing = 300 / len(gameManager.playerlist[playerID + 1].deck)
-            screen.blit(pygame.transform.rotate(pygame.transform.scale(pygame.image.load("cards/back.png"),[150,150]), -90),[100, 500 - spacing * i])
+            screen.blit(pygame.transform.rotate(pygame.transform.scale(pygame.image.load("cards/back.png"),[97,150]), -90),[100, 500 - spacing * i])
 
     if len(gameManager.playerlist) == 4:
         for i in range(len(gameManager.playerlist[playerID + 2].deck)):
             spacing = 300 / len(gameManager.playerlist[playerID + 2].deck)
-            screen.blit(pygame.transform.scale(pygame.image.load("cards/back.png"),[150,150]),[spacing * i + 425, 100])
+            screen.blit(pygame.transform.rotate(pygame.transform.scale(pygame.image.load("cards/back.png"),[97,150]), 180),[spacing * i + 425, 100])
  
         for i in range(len(gameManager.playerlist[playerID + 1].deck)):
             spacing = 300 / len(gameManager.playerlist[playerID + 1].deck)
-            screen.blit(pygame.transform.rotate(pygame.transform.scale(pygame.image.load("cards/back.png"),[150,150]), -90),[100, 500 - spacing * i])
+            screen.blit(pygame.transform.rotate(pygame.transform.scale(pygame.image.load("cards/back.png"),[97,150]), -90),[100, 500 - spacing * i])
 
         for i in range(len(gameManager.playerlist[playerID + 3].deck)):
             spacing = 300 / len(gameManager.playerlist[playerID + 3].deck)
-            screen.blit(pygame.transform.rotate(pygame.transform.scale(pygame.image.load("cards/back.png"),[150,150]), 90),[1000, 500 - spacing * i])
+            screen.blit(pygame.transform.rotate(pygame.transform.scale(pygame.image.load("cards/back.png"),[97,150]), 90),[1000, 500 - spacing * i])
 
 
     pygame.display.flip()
