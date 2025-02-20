@@ -17,9 +17,18 @@ myCard = gameManager.playerlist[playerID].deck
 while running:
     # poll for events
     # pygame.QUIT event means the user clicked X to close your window
+    
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
+
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            mcords = pygame.mouse.get_pos()
+            print(mcords)
+            if mcords[0] > 400 and mcords[0] < 800 and mcords[1] > 700 and mcords [1] < 550:
+                
+                for i in range(len(myCard)):
+                    400 + (i+1) * spacing
 
 
 
