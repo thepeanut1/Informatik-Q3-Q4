@@ -16,13 +16,7 @@ myCard = gameManager.playerlist[playerID].deck
 
 
 def cardSelected(i):
-    selected_card = myCard[i]
-    #to do: send selected card to server
-    #to do: receive move validity from server
-    if validMove:
-        myCard.pop(i)
-        validMove = False
-
+    
 while running:
     # poll for events
     # pygame.QUIT event means the user clicked X to close your window
@@ -38,7 +32,13 @@ while running:
                 
                 for i in range(len(myCard)):
                     if mcords[0] < 400 + (i+1) * spacing:
-                        cardSelected(i)
+                        selected_card = myCard[i]
+                        #to do: send selected card to server
+                        #to do: receive move validity from server
+                        if validMove:
+                            myCard.pop(i)
+                            validMove = False
+
 
 
 
