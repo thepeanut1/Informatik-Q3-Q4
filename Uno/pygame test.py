@@ -14,6 +14,15 @@ bg = pygame.image.load("bg.png")
 playerID = 0
 myCard = gameManager.playerlist[playerID].deck
 
+
+def cardSelected(i):
+    selected_card = myCard[i]
+    #to do: send selected card to server
+    #to do: receive move validity from server
+    if validMove:
+        myCard.pop(i)
+        validMove = False
+
 while running:
     # poll for events
     # pygame.QUIT event means the user clicked X to close your window
@@ -25,10 +34,11 @@ while running:
         if event.type == pygame.MOUSEBUTTONDOWN:
             mcords = pygame.mouse.get_pos()
             print(mcords)
-            if mcords[0] > 400 and mcords[0] < 800 and mcords[1] > 700 and mcords [1] < 550:
+            if mcords[0] > 400 and mcords[0] < 905 and mcords[1] > 700 and mcords [1] < 550:
                 
                 for i in range(len(myCard)):
-                    400 + (i+1) * spacing
+                    if mcords[0] < 400 + (i+1) * spacing:
+                        cardSelected(i)
 
 
 
