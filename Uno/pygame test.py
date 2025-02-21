@@ -14,8 +14,6 @@ bg = pygame.image.load("bg.png")
 playerID = 0
 myCard = gameManager.playerlist[playerID].deck
 
-
-def cardSelected(i):
     
 while running:
     # poll for events
