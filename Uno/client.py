@@ -22,7 +22,6 @@ while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
-        """
         if event.type == pygame.MOUSEBUTTONDOWN:
             mcords = pygame.mouse.get_pos()
             #print(mcords)
@@ -31,12 +30,11 @@ while running:
                 myCard.append(gameManager.stack[0])
                 gameManager.stack.pop(0)
 
-                
-            if 1 ==1:
-                print("goof")
+            if 400 < mcords[0] < 800 and 700 < mcords[1] < 805:
+                spacing = 400 / len(myCard)
                 for i in range(len(myCard)):
-                    if mcords[0] < 400 + (i+1) * spacing:
-                        print(i)
+                    if mcords[0] < 400 + (((i+1) * spacing)):
+                        print(400 + (((i+1) * spacing)))
                         selected_card = myCard[i]
                         #to do: send selected card to server
                         #to do: receive move validity from server
@@ -44,8 +42,8 @@ while running:
                         if validMove:
                             myCard.pop(i)
                             validMove = False
-            print("goooooooooooffffff")
-        """
+                        break
+                
 
 
 
