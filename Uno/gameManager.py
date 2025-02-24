@@ -54,8 +54,8 @@ def start_game():
     global stack
     stack = []
 
-    for i in range(2):
-            for 
+    #for i in range(2):
+            #for 
     for i in range(2):
             for color in colors:
                 for num in numbers:
