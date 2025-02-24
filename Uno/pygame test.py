@@ -25,7 +25,13 @@ while running:
         """
         if event.type == pygame.MOUSEBUTTONDOWN:
             mcords = pygame.mouse.get_pos()
-            print(mcords)
+            #print(mcords)
+
+            if mcords[0] > 450 and mcords[0] < 555 and mcords[1] > 400 and mcords[1] < 550:
+                myCard.append(gameManager.stack[0])
+                gameManager.stack.pop(0)
+
+                
             if 1 ==1:
                 print("goof")
                 for i in range(len(myCard)):
@@ -77,6 +83,10 @@ while running:
         for i in range(len(gameManager.playerlist[playerID + 3].deck)):
             spacing = 300 / len(gameManager.playerlist[playerID + 3].deck)
             screen.blit(pygame.transform.rotate(pygame.transform.scale(pygame.image.load("cards/back.png"),[97,150]), 90),[1000, 500 - spacing * i])
+
+    screen.blit(pygame.transform.scale(pygame.image.load("cards/"+gameManager.playedcards[-1].color+"_"+str(myCard[i].number)+".jpg"),[105,150]),[650,400])
+    screen.blit(pygame.transform.scale(pygame.image.load("cards/back.png"),[105,150]),[450,400])
+
 
 
     pygame.display.flip()
