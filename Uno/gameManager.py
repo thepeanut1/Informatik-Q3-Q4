@@ -1,4 +1,5 @@
 import random
+import client
 
 colors = ["Yellow", "Green", "Blue", "Red"]
 numbers = [1,2,3,4,5,6,7,8,9,"Draw_2", "Skip", "Reverse"]
@@ -47,6 +48,7 @@ def play_card(selected_card):
 
 def turn(p):
     p.show_cards()
+    
     print("selected_card")
     
 
@@ -55,7 +57,7 @@ def start_game():
     stack = []
 
     #for i in range(2):
-            #for 
+            #card = Cards(("wild",wild[i+1]), "wild", 
     for i in range(2):
             for color in colors:
                 for num in numbers:
@@ -84,6 +86,8 @@ def start_game():
 
 
 
+
+    global playedcards
     playedcards = []
     playedcards.append(stack[0])
     stack.pop(1)
